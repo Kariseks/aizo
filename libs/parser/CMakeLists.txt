@@ -1,6 +1,6 @@
 #parser
 set(SOURCES ${SOURCES}
-    "parser.cpp" "parser.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/parser.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/parser.h"
     PARENT_SCOPE)
 
 #==================================================================================================
