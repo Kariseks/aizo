@@ -1,3 +1,4 @@
+#include "SingleList.h"
 #include <iostream>
 
 using namespace std;
@@ -5,8 +6,12 @@ using namespace std;
 
 int main()
 {
-    Node node{};
-    node.welcome();
+
+    SingleList<int> mojaLista;
+    mojaLista.append(22);
+
+    Node<int> node{};
+    node.value = 25;
     cout << "Hello World!" << endl;
     return 0;
 }
