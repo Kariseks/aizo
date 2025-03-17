@@ -5,3 +5,5 @@ TEST_CASE("ModuleB: Odejmowanie", "[moduleB]") {
     REQUIRE(5 == 2);
 
 }
+
+

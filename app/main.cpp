@@ -2,7 +2,8 @@
 #include <iostream>
 
 using namespace std;
-#include "../libs/stl_alter/containers/node.h"
+#include <node.h>
+#include <Array.h>
 
 int main()
 {
@@ -13,5 +14,10 @@ int main()
     Node<int> node{};
     node.value = 25;
     cout << "Hello World!" << endl;
+
+
+    Array<int, 24> array{};
+
+
     return 0;
 }
