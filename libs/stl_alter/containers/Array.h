@@ -2,6 +2,7 @@
 #define ARRAY_H
 
 #include <cstddef>
+#include <iostream>
 #include <ostream>
 #include <stdexcept>
 
@@ -24,21 +25,20 @@ public:
     const T * data() const;
     std::size_t getSize();
 
-    void print(std::ostream & out);
+    void print(std::ostream & out = std::cout);
 
 private:
     T tab[N];
     std::size_t size = N;
 };
 //*********************************************************************************************************************
-
-
+//*********************************************************************************************************************
 template<typename T, std::size_t N>
 inline Array<T, N>::Array(std::initializer_list<T> list)
 {
     std::size_t size = std::min(N,list.size());
     for(int i=0; i < size; ++i)
-        tab[i] = list[i];
+        tab[i] = *(list.begin()+i);
 }
 //=====================================================================================================================
 template<typename T, std::size_t N>
@@ -54,20 +54,17 @@ bool Array<T, N>::relocate(std::size_t srcIdx, std::size_t destIdx)
 
     if(srcIdx < destIdx)    //we move the element forth
     {
-        for(int i = srcIdx; i < destIdx; )  //point to where will be new value assign
-        {
-            tab[i] = tab[++i];
-        }
-        tab[destIdx] = elementToRelocate;
+        for(int i = srcIdx; i < destIdx;++i )  //point to where will be new value assign
+            tab[i] = tab[i+1];
+
     }
     else    // we move the element back
     {
         for(int i = srcIdx; i > destIdx;)
-        {
             tab[i-1] = tab[i];  //can be faster ?
-        }
-    }
 
+    }
+    tab[destIdx] = elementToRelocate;
     return true;
 }
 //-------------------------------------------------------------------------------------------------
@@ -114,7 +111,7 @@ template<typename T, std::size_t  N>
 inline void Array<T, N>::print(std::ostream & out)
 {
     for(int i = 0; i < size; ++i)
-        out << "[" << i << "]:=" << tab[i];
+        out << "[" << i << "]:=" << tab[i] << std::endl;
     out << std::endl;
 }
 //-------------------------------------------------------------------------------------------------

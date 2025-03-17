@@ -1,7 +1,7 @@
 #stl_alter
 set(LIB_NAME "stl_alter")
 set(SOURCES "") #library sources files
-add_library(${LIB_NAME})
+add_library(${LIB_NAME} STATIC)
 
 set(TEST_NAME "stl_alter_test")
 set(TEST_SOURCES "")    #test file of the library
@@ -11,7 +11,7 @@ add_subdirectory("./algorithms/")
 add_subdirectory("./containers/")
 #==================================================================================================
 target_sources(${LIB_NAME} PUBLIC ${SOURCES})
-target_compile_features(${LIB_NAME} PRIVATE cxx_std_23)
+target_compile_features(${LIB_NAME} INTERFACE cxx_std_23)
 set_target_properties(${LIB_NAME} PROPERTIES LINKER_LANGUAGE CXX) #i dont expect any cpp files in my lib, only templates
 #target_sources(${LIB_NAME} PUBLIC ${SOURCES})
 #==================================================================================================
