@@ -5,8 +5,8 @@ template <typename T>
 class Node
 {
 public:
-    Node(){};
-    Node(T value, Node<T> * next);
+    Node() = default;
+    Node(T value, Node<T> * next = nullptr);
 public:
     T value;
     Node<T> * next = nullptr;
